@@ -22,17 +22,29 @@ const CreateEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    const userId = localStorage.getItem("userId");
 
     const newEvent = {
+      ...form,
       id: Date.now(),
-      ...form
+      creatorId: userId,
     };
-
-    const existing = JSON.parse(localStorage.getItem("myEvents") || "[]");
-    localStorage.setItem("myEvents", JSON.stringify([...existing, newEvent]));
-
-    navigate("/my-events");
-  };
+    
+    const allEvents = JSON.parse(localStorage.getItem("allEvents") || "[]");
+    allEvents.push(newEvent);
+    localStorage.setItem("allEvents", JSON.stringify(allEvents));
+    
+    // Auto-register the creator
+    const myEventIds = JSON.parse(localStorage.getItem("myEventIds") || "[]");
+    if (!myEventIds.includes(newEvent.id)) {
+      const updatedIds = [...myEventIds, newEvent.id];
+      localStorage.setItem("myEventIds", JSON.stringify(updatedIds));
+    }    
+  
+    // Redirect to "Events" (you can change to /calendar or wherever you want)
+    navigate("/events");
+  };  
 
   return (
     <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
