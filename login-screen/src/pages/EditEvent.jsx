@@ -3,16 +3,17 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const EditEvent = () => {
   const { id } = useParams();
+  const eventId = parseInt(id);
   const navigate = useNavigate();
   const [form, setForm] = useState(null);
 
   useEffect(() => {
-    const events = JSON.parse(localStorage.getItem("myEvents") || "[]");
+    const events = JSON.parse(localStorage.getItem("allEvents") || "[]");
     const existing = events.find(e => e.id === parseInt(id));
     if (existing) {
       setForm(existing);
     } else {
-      navigate("/my-events");
+      navigate("/events");
     }
   }, [id, navigate]);
 
@@ -25,10 +26,10 @@ const EditEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const events = JSON.parse(localStorage.getItem("myEvents") || "[]");
+    const events = JSON.parse(localStorage.getItem("allEvents") || "[]");
     const updated = events.map(ev => ev.id === form.id ? form : ev);
-    localStorage.setItem("myEvents", JSON.stringify(updated));
-    navigate("/my-events");
+    localStorage.setItem("allEvents", JSON.stringify(updated));
+    navigate("/events");
   };
 
   if (!form) return <div style={{ padding: "20px" }}>Loading event...</div>;
