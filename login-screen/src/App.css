@@ -40,3 +40,37 @@
 .read-the-docs {
   color: #888;
 } */
+
+/* Stretch the calendar across the whole screen */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  width: 100%; /* Full width */
+  margin: 0 auto; /* Center the grid */
+}
+
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+}
+
+/* Fix the detailed view layout */
+.selected-day-details {
+  max-width: 900px; /* Optional: Limit the width for readability */
+  margin: 0 auto; /* Center the details */
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  margin-top: 24px; /* Add space above the selected day details */
+}
+
