@@ -2,5 +2,9 @@
   {
     "username": "Sam@gmail.com",
     "password": "$2b$10$oBXiH3XfwVQMZuLkQ4mYbOMpyZKeOkGIPJDKOgOV1OoE392JzjIeK"
+  },
+  {
+    "username": "sam@gmail.com",
+    "password": "$2b$10$Wj7SoCKktMe1EXZ54MSuOeBzorLPsBJhYqrPBydtUie2F/zYb3g52"
   }
 ]

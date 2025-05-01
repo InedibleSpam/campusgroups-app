@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CreateEventButton from "../components/CreateEventButton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const mockAllEvents = [
   { id: 101, title: "Event 1", dateTime: "2025-05-03" },
@@ -104,6 +104,7 @@ const formatDateTime = (dateTimeStr) => {
           <EventCard key={event.id} event={event} />
         ))}
       </div>
+      <Link to = "/">Go to Homepage</Link>
     </div>
   );
 };
