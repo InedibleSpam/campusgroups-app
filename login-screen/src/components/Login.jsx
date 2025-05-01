@@ -4,24 +4,34 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   function handleLogin(e) {
     e.preventDefault();
 
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const userCredentials = { username: email, password };
 
-    if (!storedUser) {
-      alert('No user found. Please register first.');
-      return;
-    }
-
-    if (email === storedUser.email && password === storedUser.password) {
-      localStorage.setItem('loggedIn', true);
-      navigate('/Homepage'); 
-    } else {
-      alert('Invalid email or password');
-    }
+    fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userCredentials),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'Login successful') {
+          localStorage.setItem('loggedIn', 'true');
+          navigate('/Homepage');
+        } else {
+          setError(data.message);
+        }
+      })
+      .catch((error) => {
+        setError('Error occurred while logging in.');
+        console.error('Login Error:', error);
+      });
   }
 
   return (
