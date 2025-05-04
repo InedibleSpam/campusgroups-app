@@ -4,7 +4,12 @@
     "password": "$2b$10$oBXiH3XfwVQMZuLkQ4mYbOMpyZKeOkGIPJDKOgOV1OoE392JzjIeK"
   },
   {
+<<<<<<< HEAD
+    "username": "JetPack4000@gmail.com",
+    "password": "$2b$10$n0.bPIACNQdxpI57yz8gA.U4.2jw.aIc0ijqbuy9vICK4kDV4AMc2"
+=======
     "username": "sam@gmail.com",
     "password": "$2b$10$Wj7SoCKktMe1EXZ54MSuOeBzorLPsBJhYqrPBydtUie2F/zYb3g52"
+>>>>>>> 514da2dab0d190bbe44a714f222e923d482abac4
   }
 ]
