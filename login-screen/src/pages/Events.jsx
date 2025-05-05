@@ -139,6 +139,14 @@ const Events = () => {
                   </button>
                 )}
               </div>
+              {/* 3-dot menu for edit and delete options */}
+              <div className="event-options">
+                <button className="menu-button">⋮</button>
+                <div className="dropdown-menu">
+                  <button onClick={() => handleEdit(event.id)}>Edit</button>
+                  <button onClick={() => handleDelete(event.id)}>Delete</button>
+                </div>
+              </div>
             </div>
           ))
         )}
