@@ -11,8 +11,6 @@ export default function HomePage() {
 
         <>
 
-            <GroupNavbar />
-
             <h1> This is the My Group page </h1>
             <SearchGroups />
         </>

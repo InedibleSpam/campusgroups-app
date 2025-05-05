@@ -17,8 +17,6 @@ if(!group){
 
         <>
 
-            <GroupNavbar />
-
             <h1> This is the EditGroup Page </h1>
            <Edit group={group} />
 
