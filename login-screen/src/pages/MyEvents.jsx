@@ -104,7 +104,7 @@ const formatDateTime = (dateTimeStr) => {
           <EventCard key={event.id} event={event} />
         ))}
       </div>
-      <Link to = "/">Go to Homepage</Link>
+      <Link to = "/Homepage">Go to Homepage</Link>
     </div>
   );
 };

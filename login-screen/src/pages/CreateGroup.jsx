@@ -10,8 +10,6 @@ export default function CreateGroup() {
 
         <>
 
-            <GroupNavbar />
-
             <h1> This is the Create Group Page </h1>
             <Create />
         </>
