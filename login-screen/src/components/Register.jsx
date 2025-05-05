@@ -31,7 +31,7 @@ export default function Register() {
       .then((res) => res.json())
       .then((data) => {
         if (data.message === 'User registered successfully') {
-          navigate('/Login');
+          navigate('/login');
         } else {
           setError(data.message || 'Registration failed.');
         }
@@ -72,7 +72,7 @@ export default function Register() {
         <div className="form-footer">
           <button type="submit">Register</button>
           <span>
-            Already have an account? <Link to="/Login">Sign in</Link>
+            Already have an account? <Link to="/login">Sign in</Link>
           </span>
         </div>
       </form>
