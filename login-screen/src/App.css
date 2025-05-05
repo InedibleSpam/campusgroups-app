@@ -534,3 +534,103 @@ button:hover {
 .selected-day-details .buttons .close-button:hover {
   background-color: #f5c6cb;
 }
+
+/* Search Groups Container */
+.search-groups-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9; /* Light background for better contrast */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.groups-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.groups-header h2 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+  color: #333; /* Darker text for better readability */
+}
+
+/* Form Styling */
+.search-groups-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-groups-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Rubik', sans-serif;
+  background-color: #fff;
+}
+
+.search-groups-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Rubik', sans-serif;
+  background-color: #fff;
+}
+
+/* Results Title */
+.search-groups-results-title {
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Results List */
+.search-groups-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-groups-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Edit Button */
+.search-groups-edit-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff7f11;
+  color: white;
+  cursor: pointer;
+  font-family: 'Rubik', sans-serif;
+  transition: background-color 0.2s;
+}
+
+.search-groups-edit-button:hover {
+  background-color: #ff1b1c;
+}
+
+/* No Results Message */
+.search-groups-no-results {
+  font-family: 'Rubik', sans-serif;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}

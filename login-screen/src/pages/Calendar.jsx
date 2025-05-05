@@ -3,9 +3,11 @@ import CreateEventButton from "../components/CreateEventButton";
 
 // Function to generate a consistent color for each group based on its ID
 const generateColor = (id) => {
-  const hash = id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const hue = hash % 360; // Generate a hue value between 0 and 360
-  return `hsl(${hue}, 70%, 80%)`; // Light pastel colors
+  const hash = String(id).split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hue = (hash * 137) % 360; // Multiply by a prime number for more variation
+  const saturation = 50 + (hash % 50); // Saturation between 50% and 100%
+  const lightness = 60 + (hash % 20); // Lightness between 60% and 80%
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
 const Calendar = () => {
@@ -25,10 +27,10 @@ const Calendar = () => {
     setAllEvents(storedEvents);
     setMyEventIds(myIds);
 
-    // Generate colors for groups
+    // Generate colors for groups using group IDs as keys
     const savedGroups = JSON.parse(localStorage.getItem("groups") || "[]");
     const colors = savedGroups.reduce((acc, group) => {
-      acc[group.id] = generateColor(group.id);
+      acc[group.id] = generateColor(group.id); // Use group ID as key
       return acc;
     }, {});
     setGroupColors(colors);
@@ -120,12 +122,15 @@ const Calendar = () => {
 
       {/* Legend for group colors */}
       <div className="calendar-legend">
-        {Object.entries(groupColors).map(([groupId, color]) => (
-          <div key={groupId} className="calendar-legend-item">
-            <div style={{ backgroundColor: color }} />
-            <span>{groupId}</span>
-          </div>
-        ))}
+        {Object.entries(groupColors).map(([groupId, color]) => {
+          const group = JSON.parse(localStorage.getItem("groups") || "[]").find((g) => g.id === groupId);
+          return (
+            <div key={groupId} className="calendar-legend-item">
+              <div style={{ backgroundColor: color }} />
+              <span>{group?.name || "Unknown Group"}</span>
+            </div>
+          );
+        })}
       </div>
 
       {/* Calendar grid displaying days and events */}

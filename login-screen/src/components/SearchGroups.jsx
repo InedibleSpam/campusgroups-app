@@ -1,56 +1,77 @@
-import { use } from "react";
 import { useEffect, useState } from "react";
-import React from "react";
-import EditGroup from "./Edit";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function SearchGroups() {
-    const [groups, setGroups] = useState([])
-    const [filteredGroups, setFilteredGroups] = useState([]);
+function SearchGroups({ onSearch, groups = [] }) {
+    const [filteredGroups, setFilteredGroups] = useState(groups);
+    const [searchType, setSearchType] = useState("title");
     const navigate = useNavigate();
+
     useEffect(() => {
-        const savedGroups = JSON.parse(localStorage.getItem("groups")) || [];
-        setGroups(savedGroups);
-    }, []);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const searchTerm = e.target.elements.search.value.toLowerCase();
-        if (searchTerm.trim() == "") {
-            setFilteredGroups([]); //Clear the filtered Groups
+        if (Array.isArray(groups)) {
+            setFilteredGroups(groups);
+        }
+    }, [groups]);
+
+    const handleSearch = (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        if (searchTerm.trim() === "") {
+            setFilteredGroups(groups);
         } else {
             const filtered = groups.filter((group) =>
-                group.name.toLowerCase().includes(searchTerm)
+                searchType === "title"
+                    ? group.name.toLowerCase().includes(searchTerm)
+                    : group.tag && group.tag.toLowerCase().includes(searchTerm)
             );
-            setFilteredGroups(filtered); //Set the filtered groups to the state
+            setFilteredGroups(filtered);
         }
-    }
+        if (onSearch) {
+            onSearch(searchTerm);
+        }
+    };
 
     const handleEdit = (group) => {
+        navigate(`/edit-group/${group.id}`, { state: { group } });
+    };
 
-        navigate(`/Edit`, { state: { group } });
-    }
-    return (<>
-        <form onSubmit={handleSubmit}>
-            <h2>Search for a group</h2>
-            <input type="text" name="search" placeholder="Search by group name" />
-            <button type="submit">Search</button>
-        </form>
-        <h2>Search Results</h2>
-        {filteredGroups.length > 0 ? (
-            <ul>
-                {filteredGroups.map((group, index) => (
-                    <li key={index}>
-                        <strong>{group.name}</strong>: {group.description} ({group.tag})
-                        <button onClick={()=> handleEdit(group)}>Edit</button>
-                    </li>
-                ))}
-            </ul>
-        ) : (
-            <p>{filteredGroups.length === 0 && "No Groups Found"}</p>
-        )}
-
-
-    </>
-    )
+    return (
+        <div className="search-groups-container">
+            <form className="search-groups-form">
+                <select
+                    value={searchType}
+                    onChange={(e) => setSearchType(e.target.value)}
+                    className="search-groups-select"
+                >
+                    <option value="title">Title</option>
+                    <option value="tag">Tag</option>
+                </select>
+                <input
+                    type="text"
+                    name="search"
+                    placeholder={`Search by ${searchType}`}
+                    onChange={handleSearch}
+                    className="search-groups-input"
+                />
+            </form>
+            <h2 className="search-groups-results-title">Search Results</h2>
+            {filteredGroups && filteredGroups.length > 0 ? (
+                <ul className="search-groups-list">
+                    {filteredGroups.map((group) => (
+                        <li key={group.id} className="search-groups-item">
+                            <strong>{group.name}</strong>: {group.description} ({group.tag})
+                            <button
+                                className="search-groups-edit-button"
+                                onClick={() => handleEdit(group)}
+                            >
+                                Edit
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p className="search-groups-no-results">No Groups Found</p>
+            )}
+        </div>
+    );
 }
+
 export default SearchGroups;

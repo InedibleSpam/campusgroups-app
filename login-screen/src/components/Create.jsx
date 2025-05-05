@@ -11,16 +11,16 @@ function Create() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //create a group object
+        // Create a group object
         const newGroup = {
-            id: Date.now(), // Unique ID based on timestamp
+            id: Date.now().toString(), // Convert ID to a string
             name: groupName,
             description: groupDescription,
             tag: groupTag,
             members: members,
-        }
+        };
 
-        //save the group to localstorage
+        // Save the group to localStorage
         const savedGroups = JSON.parse(localStorage.getItem("groups")) || [];
         savedGroups.push(newGroup);
         localStorage.setItem("groups", JSON.stringify(savedGroups));
