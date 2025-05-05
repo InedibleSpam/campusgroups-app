@@ -27,7 +27,7 @@ export default function Login() {
       .then((data) => {
         if (data.message === 'Login successful') {
           localStorage.setItem('loggedIn', 'true');
-          navigate('/Homepage');
+          navigate('/homepage');
         } else {
           setError(data.message);
         }

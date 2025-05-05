@@ -47,14 +47,14 @@
 }
 
 .login-container input:focus {
-  border-color: #ff7f11;
+  border-color: #ff1b1c;
   box-shadow: 0 0 4px rgba(255, 127, 17, 0.3);
   outline: none;
 }
 
 .login-container button {
   padding: 12px;
-  background-color: #ff7f11;
+  background-color: #ff1b1c;
   color: #fffffc;
   width: 150px;
   font-size: 16px;
@@ -66,11 +66,11 @@
 }
 
 .login-container button:hover {
-  background-color: #ff1b1c;
+  background-color: #ff7f11;
 }
 
 .login-container .error {
-  color: #ff1b1c;
+  color: #ff7f11;
   font-size: 14px;
   text-align: center;
   margin-top: -10px;
@@ -90,7 +90,7 @@
 }
 
 .login-container a {
-  color: #ff7f11;
+  color: #ff1b1c;
   text-decoration: none;
 }
 
