@@ -1,0 +1,177 @@
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fffffc;
+    min-height: 100vh;
+    color: #000000;
+    font-family: 'Rubik', sans-serif;
+}
+
+.homepage-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ff1b1c; 
+    font-family: 'Kanit', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.homepage-header p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #000000; 
+    font-family: 'Sanchez', serif;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.homepage-nav {
+    width: auto; 
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.homepage-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.homepage-nav li {
+    margin: 0;
+}
+
+.homepage-nav a {
+    text-decoration: none;
+    color: #fffffc;
+    font-size: 1.2rem; 
+    font-weight: 600;
+    padding: 12px 24px; 
+    background-color: #ff7f11;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-family: 'Rubik', sans-serif;
+}
+
+.homepage-nav a:hover {
+    background-color: #ff1b1c; 
+    color: #fffffc; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.homepage-featured {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fffffc;
+    color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-featured h2 {
+    font-size: 2rem;
+    font-family: 'Kanit', sans-serif;
+    color: #ff1b1c;
+    margin-bottom: 20px;
+}
+
+.featured-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #beb7a4;
+    color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: #ff7f11;
+    margin-bottom: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #000000;
+}
+
+.homepage-footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ff7f11;
+    color: #fffffc;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 8px;
+}
+
+.homepage-footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .homepage-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .homepage-header p {
+        font-size: 1rem;
+    }
+
+    .homepage-nav a {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .featured-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage-header h1 {
+        font-size: 2rem;
+    }
+
+    .homepage-header p {
+        font-size: 0.9rem;
+    }
+
+    .homepage-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .homepage-nav a {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}

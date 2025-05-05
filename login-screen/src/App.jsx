@@ -14,6 +14,7 @@ import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import Navbar from "./components/Navbar";
 import Calendar from "./pages/Calendar";
+import GroupHomePage from './pages/GroupHomePage'
 import "./App.css";
 
 
@@ -26,6 +27,7 @@ function App() {
                   <Navbar></Navbar>
                   <Routes>
                         <Route path="/" element={<Login></Login>} />
+                        <Route path="/login" element={<Login></Login>} />
                         <Route path="/register" element={<Register></Register>} />
                         <Route path="/homepage" element={<Homepage></Homepage>} />
                         <Route path="/events" element={<Events></Events>} />
