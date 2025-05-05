@@ -12,6 +12,8 @@ const USERS_FILE = path.join(__dirname, 'users.json');
 app.use(cors());
 app.use(express.json());
 
+//Handling for encrypting passwords and storing login data
+
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
 

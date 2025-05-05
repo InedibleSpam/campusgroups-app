@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Rubik:wght@400;500&family=Sanchez&display=swap');
+
+.login-page {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffffc;
+  font-family: 'Rubik', sans-serif;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #beb7a4;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
+}
+
+.login-container h1 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #000000;
+  text-align: center;
+}
+
+.login-container input {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #beb7a4;
+  border-radius: 6px;
+  background-color: #fffffc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-container input:focus {
+  border-color: #ff7f11;
+  box-shadow: 0 0 4px rgba(255, 127, 17, 0.3);
+  outline: none;
+}
+
+.login-container button {
+  padding: 12px;
+  background-color: #ff7f11;
+  color: #fffffc;
+  width: 150px;
+  font-size: 16px;
+  font-family: 'Sanchez', serif;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #ff1b1c;
+}
+
+.login-container .error {
+  color: #ff1b1c;
+  font-size: 14px;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #000000;
+  gap: 6px;
+}
+
+.form-footer span {
+  margin-top: 5px;
+}
+
+.login-container a {
+  color: #ff7f11;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}

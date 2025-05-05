@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../stylesheets/loginScreen.css'; 
 
 export default function Register() {
+  //Create variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  //Function for password confirmation
   function handleRegister(e) {
     e.preventDefault();
-
     if (password !== confirmPassword) {
-      alert('Passwords do not match!');
+      setError('Passwords do not match');
       return;
     }
 
     const newUser = { username: email, password };
 
+    //Stores credentials to backend
     fetch('http://localhost:3000/api/register', {
       method: 'POST',
       headers: {
@@ -25,58 +28,51 @@ export default function Register() {
       },
       body: JSON.stringify(newUser),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         if (data.message === 'User registered successfully') {
-          setEmail('');
-          setPassword('');
-          setConfirmPassword('');
-          navigate('/login');
+          navigate('/Login');
         } else {
-          setError(data.message);
+          setError(data.message || 'Registration failed.');
         }
       })
-      .catch((error) => {
+      .catch((err) => {
         setError('Error occurred while registering.');
-        console.error('Registration Error:', error);
+        console.error('Register Error:', err);
       });
   }
 
+  //Create registration form
   return (
-    <div>
-      <form onSubmit={handleRegister}>
-        <h1>Register</h1>
-        <div>
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Your Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-        <div>
+    <div className="login-page">
+      <form className="login-container" onSubmit={handleRegister}>
+        <h1>Create Account</h1>
+        <input
+          type="email"
+          placeholder="username@houghton.edu"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        {error && <div className="error">{error}</div>}
+        <div className="form-footer">
+          <button type="submit">Register</button>
           <span>
-            Already Have an Account? <Link to="/login">Sign In</Link>
+            Already have an account? <Link to="/Login">Sign in</Link>
           </span>
         </div>
       </form>
