@@ -1,26 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
-import GroupNavbar from "../components/groupnavbar";
-import ListGroups from "../components/ListGroups";
+import { useState } from "react";
 import SearchGroups from "../components/SearchGroups";
-export default function GroupHomePage() {
+import { useEffect } from "react";
+import React from "react";
+import Create from "../components/Create";
+import CreateGroupButton from "../components/CreateGroupButton";
 
-    const navigate = useNavigate();
-    const data = { fname: "John", lname: "Thomas" }
+export default function GroupHomePage() {
+    const [groups, setGroups] = useState([])
+    useEffect(() => {
+        const savedGroups = JSON.parse(localStorage.getItem("groups")) || [];
+        setGroups(savedGroups);
+    }, []);
+
 
     return (
-
         <>
 
-            <h1> This is the Homepage </h1>
-            <SearchGroups />
-            <ListGroups />
+                <div className="groups-header">
+                    <h1>All Groups</h1>
+                    <CreateGroupButton />
+                </div>
+                <SearchGroups groups={groups} />
             
-
-            <div style={{ marginTop: "20px" }}>
-                <Link to="/create-group">
-                    <button>+ Create New Group</button>
-                </Link>
-            </div>
         </>
-    )
+    );
 }
