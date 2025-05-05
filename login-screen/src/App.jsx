@@ -14,7 +14,7 @@ import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import Navbar from "./components/Navbar";
 import Calendar from "./pages/Calendar";
-import GroupHomePage from './pages/GroupHomePage'
+
 import "./App.css";
 
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CreateGroupButton from "./CreateGroupButton";
 
 function SearchGroups({ onSearch, groups = [] }) {
     const [filteredGroups, setFilteredGroups] = useState(groups);
@@ -35,6 +36,10 @@ function SearchGroups({ onSearch, groups = [] }) {
 
     return (
         <div className="search-groups-container">
+            <div className="groups-header">
+                <h1>All Groups</h1>
+                <CreateGroupButton />
+            </div>
             <form className="search-groups-form">
                 <select
                     value={searchType}
@@ -57,7 +62,9 @@ function SearchGroups({ onSearch, groups = [] }) {
                 <ul className="search-groups-list">
                     {filteredGroups.map((group) => (
                         <li key={group.id} className="search-groups-item">
-                            <strong>{group.name}</strong>: {group.description} ({group.tag})
+                            <strong>{group.name}</strong>
+                            {/* <br></br> */}
+                             {group.description} ({group.tag})
                             <button
                                 className="search-groups-edit-button"
                                 onClick={() => handleEdit(group)}

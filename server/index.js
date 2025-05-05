@@ -64,6 +64,18 @@ app.post('/api/login', async (req, res) => {
   res.json({ message: 'Login successful' });
 });
 
+// Endpoint to fetch all users
+app.get('/api/users', (req, res) => {
+  try {
+    const fileData = fs.readFileSync(USERS_FILE, 'utf-8');
+    const users = JSON.parse(fileData);
+    res.json(users); // Send the users as JSON
+  } catch (err) {
+    console.error('Error reading users.json:', err);
+    res.status(500).json({ message: 'Server error reading user data' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

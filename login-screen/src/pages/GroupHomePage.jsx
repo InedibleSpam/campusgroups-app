@@ -16,12 +16,8 @@ export default function GroupHomePage() {
     return (
         <>
 
-                <div className="groups-header">
-                    <h1>All Groups</h1>
-                    <CreateGroupButton />
-                </div>
-                <SearchGroups groups={groups} />
-            
+            <SearchGroups groups={groups} />
+
         </>
     );
 }
