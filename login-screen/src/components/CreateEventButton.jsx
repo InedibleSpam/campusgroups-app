@@ -1,20 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// Button component to navigate to the "Create Event" page
 const CreateEventButton = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to programmatically navigate between routes
 
   return (
     <button
+      className="create-event-button"
       onClick={() => navigate("/create-event")}
-      style={{
-        padding: "8px 12px",
-        backgroundColor: "#4CAF50",
-        color: "white",
-        border: "none",
-        borderRadius: "4px",
-        cursor: "pointer"
-      }}
     >
       + Create Event
     </button>
