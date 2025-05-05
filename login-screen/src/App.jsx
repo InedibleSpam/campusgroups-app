@@ -4,7 +4,6 @@ import Login from './components/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Register from './components/Register'
 import Homepage from './components/Homepage'
-
 import GroupHomePage from './pages/GroupHomePage'
 import MyGroups from './pages/MyGroups'
 import CreateGroup from './pages/CreateGroup'
@@ -14,7 +13,10 @@ import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import Navbar from "./components/Navbar";
 import Calendar from "./pages/Calendar";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05a64d89f860cf9f19ad7b60a8720c5372a8b73b
 import "./App.css";
 
 
