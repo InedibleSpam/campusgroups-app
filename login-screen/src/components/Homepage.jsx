@@ -13,7 +13,7 @@ export default function Homepage() {
                 <ul>
                     <li><Link to="/events">View Events</Link></li>
                     <li><Link to="/calendar">Event Calendar</Link></li>
-                    <li><Link to="/mygroups">My Groups</Link></li>
+                    <li><Link to="/grouphomepage">Groups</Link></li>
                     <li><Link to="/create-group">Create a Group</Link></li>
                 </ul>
             </nav>
