@@ -6,5 +6,16 @@
   {
     "username": "isaac@houghton.edu",
     "password": "$2b$10$7bX51xSkC32am3ZHSng7bu8.8vBPriQ0REcQCGyvSoCz.0jDcywj6"
+  },
+  {
+    "name": "Sam",
+    "email": "sffigard@gmail.com",
+    "password": "$2b$10$Sb5ICqDOv80GGdD8jTJ5gOIQgItX8l.kVnEuScT/621qXxdmPF5lm"
+  },
+  {
+    "id": 1,
+    "name": "Sam Figard",
+    "email": "sam1@gmail.com",
+    "password": "$2b$10$aFcbkLX6ija7CgP/8ilVYOm6JMz.jIKJDSFPhDiOe9UhQbMwwRPX."
   }
 ]

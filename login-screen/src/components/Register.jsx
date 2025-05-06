@@ -8,6 +8,7 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [name, setName] = useState('');
   const navigate = useNavigate();
 
   //Function for password confirmation
@@ -18,7 +19,7 @@ export default function Register() {
       return;
     }
 
-    const newUser = { username: email, password };
+    const newUser = { name, email, password };
 
     //Stores credentials to backend
     fetch('http://localhost:3000/api/register', {
@@ -48,8 +49,15 @@ export default function Register() {
       <form className="login-container" onSubmit={handleRegister}>
         <h1>Create Account</h1>
         <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
           type="email"
-          placeholder="username@houghton.edu"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required

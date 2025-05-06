@@ -7,13 +7,14 @@ export default function Login() {
   //Create variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   function handleLogin(e) {
     e.preventDefault();
 
-    const userCredentials = { username: email, password };
+    const userCredentials = { email, password };
 
     //Fetches credentials from backend
     fetch('http://localhost:3000/api/login', {
@@ -43,9 +44,10 @@ export default function Login() {
     <div className="login-page">
       <form className="login-container" onSubmit={handleLogin}>
         <h1>Sign in</h1>
+      
         <input
           type="email"
-          placeholder="username@houghton.edu"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
