@@ -31,7 +31,7 @@ function App() {
                         <Route path="/homepage" element={<Homepage></Homepage>} />
                         <Route path="/events" element={<Events></Events>} />
                         <Route path="/create-event" element={<CreateEvent />} />
-                        <Route path="/edit-event/:id" element={<EditEvent />} />
+                        <Route path="/edit-event/:id" element={<EditEvent />} />  
                         <Route path="/calendar" element={<Calendar />} />
                         <Route path="/grouphomepage" element={<GroupHomePage />} />
                         <Route path="/create-group" element={<CreateGroup />} />
