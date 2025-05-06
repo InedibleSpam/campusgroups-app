@@ -14,6 +14,7 @@ import EditEvent from './pages/EditEvent';
 import Navbar from "./components/Navbar";
 import Calendar from "./pages/Calendar";
 import "./App.css";
+import NotFound from './pages/NotFound'
 
 
 
@@ -36,6 +37,7 @@ function App() {
                         <Route path="/create-group" element={<CreateGroup />} />
                         <Route path="/edit-group/:id" element={<EditGroup />} />
                         <Route path="/mygroups" element={<MyGroups />} />
+                        <Route path="*" element={<NotFound/>} />
                   </Routes>
             </Router>
       );

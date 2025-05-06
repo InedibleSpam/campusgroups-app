@@ -175,3 +175,17 @@
         max-width: 100%;
     }
 }
+@media (max-width: 768px) {
+    .homepage-featured h2 {
+      font-size: 1.5rem;
+    }
+  
+    .card h3 {
+      font-size: 1.2rem;
+    }
+  
+    .card p {
+      font-size: 0.9rem;
+    }
+  }
+  

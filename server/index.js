@@ -3,7 +3,7 @@ const cors = require('cors');
 const fs = require('fs').promises;
 const path = require('path');
 const bcrypt = require('bcryptjs');
-
+const nodemailer = require('nodemailer');
 const app = express();
 const PORT = 3000;
 
@@ -86,6 +86,50 @@ app.post('/api/login', async (req, res) => {
   }
 
   res.json({ message: 'Login successful' });
+});
+
+// Forgot Password endpoint
+app.post('/api/forgot-password', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) return res.status(400).json({ message: 'Email is required' });
+
+  let users = [];
+  try {
+    const fileData = await fs.readFile(USERS_FILE, 'utf-8');
+    users = JSON.parse(fileData);
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error reading user data' });
+  }
+
+  const user = users.find(u => u.email === email);
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  // Setup transporter
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'campus.connect.website@gmail.com',
+      pass: 'saet vsdq yknv pixx'
+    }
+  });
+
+  const mailOptions = {
+    from: 'campus.connect.website@gmail.com',
+    to: email,
+    subject: 'Password Reset',
+    text: `Hi ${user.name},\n\nHere's your password reset link: http://example.com/reset-password\n\n`
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.json({ message: 'Reset email sent' });
+  } catch (err) {
+    console.error('Email error:', err);
+    res.status(500).json({ message: 'Error sending email' });
+  }
 });
 
 // Get all users (name, email, and id only)

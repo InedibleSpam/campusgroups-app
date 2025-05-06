@@ -97,3 +97,22 @@
 .login-container a:hover {
   text-decoration: underline;
 }
+@media (max-width: 768px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+
+  .login-container h1 {
+    font-size: 24px;
+  }
+
+  .login-container input,
+  .login-container button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .login-container button {
+    width: 100%;
+  }
+}
