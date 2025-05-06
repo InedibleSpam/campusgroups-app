@@ -13,9 +13,13 @@
     "password": "$2b$10$Sb5ICqDOv80GGdD8jTJ5gOIQgItX8l.kVnEuScT/621qXxdmPF5lm"
   },
   {
-    "id": 1,
     "name": "Sam Figard",
     "email": "sam1@gmail.com",
     "password": "$2b$10$aFcbkLX6ija7CgP/8ilVYOm6JMz.jIKJDSFPhDiOe9UhQbMwwRPX."
+  },
+  {
+    "name": "Joe",
+    "email": "banana@gmail.com",
+    "password": "$2b$10$Evn3qBVSu1Gqfv1qSzzsZOOjahdgwJcR0CVLsQDq/taVeHxuJwuKi"
   }
 ]

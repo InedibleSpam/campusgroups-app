@@ -9,16 +9,19 @@ function Create() {
     const [groupTag, setGroupTag] = useState("");
     const [members, setMembers] = useState([]);
     const navigate = useNavigate(); // Hook to programmatically navigate between routes
-    const [createdGroups, setCreatedGroups] = useState([]); // State to store created groups for display
 
     const handleAddMember = (member) => {
-        if (!members.some((m) => m.id === member.id)) {
+        if (!members.some((m) => m.name === member.name)) {
             setMembers([...members, member]);
         } else {
             alert("Member already added!");
         }
     };
-    
+
+    const handleRemoveMember = (memberName) => {
+        setMembers(members.filter((member) => member.name !== memberName));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -36,14 +39,11 @@ function Create() {
         savedGroups.push(newGroup);
         localStorage.setItem("groups", JSON.stringify(savedGroups));
 
-        setCreatedGroups(savedGroups);
-
         setGroupName("");
         setGroupDescription("");
         setGroupTag("");
         setMembers([]);
 
-        console.log("Form submitted!");
         alert("Group created successfully!");
         navigate("/grouphomepage"); // Redirect to the groups page after creation
     };
@@ -133,7 +133,16 @@ function Create() {
                     <MemberSearch onAddMember={handleAddMember} />
                     <ul className="added-members-list">
                         {members.map((member) => (
-                            <li key={member.id}>{member.name}</li>
+                            <li key={member.name} className="added-member-item">
+                                {member.name}
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveMember(member.name)}
+                                    className="remove-member-button"
+                                >
+                                    Remove
+                                </button>
+                            </li>
                         ))}
                     </ul>
                 </div>

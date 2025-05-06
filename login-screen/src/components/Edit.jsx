@@ -45,16 +45,16 @@ function Edit({ group }) {
     };
 
     const handleAddMember = (member) => {
-        if (!members.some((m) => m.username === member.username)) {
+        if (!members.some((m) => m.name === member.name)) {
             setMembers([...members, member]);
         } else {
             alert("Member already added!");
         }
     };
 
-    const handleRemoveMember = (memberUsername) => {
+    const handleRemoveMember = (memberName) => {
         // Remove the member by their username
-        setMembers(members.filter((m) => m.username !== memberUsername));
+        setMembers(members.filter((m) => m.name !== memberName));
     };
     return (
         <div className="create-group-container">
@@ -109,11 +109,11 @@ function Edit({ group }) {
                     <MemberSearch onAddMember={handleAddMember} />
                     <ul className="added-members-list">
                         {members.map((member) => (
-                            <li key={member.username} className="added-member-item">
-                                {member.username}
+                            <li key={member.name} className="added-member-item">
+                                {member.name}
                                 <button
                                     type="button"
-                                    onClick={() => handleRemoveMember(member.username)}
+                                    onClick={() => handleRemoveMember(member.name)}
                                     className="remove-member-button"
                                 >
                                     Remove

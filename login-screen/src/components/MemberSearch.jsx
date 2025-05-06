@@ -24,7 +24,7 @@ function MemberSearch({ onAddMember }) {
             setFilteredUsers([]);
         } else {
             const filtered = users.filter((user) =>
-                user.username && user.username.toLowerCase().includes(searchTerm.toLowerCase())
+                user.name && user.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setFilteredUsers(filtered);
         }
@@ -43,8 +43,8 @@ function MemberSearch({ onAddMember }) {
                 <ul className="member-search-dropdown">
                     {filteredUsers.map((user) => (
                         console.log(filteredUsers),
-                        <li key={user.username} className="member-search-item">
-                            {user.username}
+                        <li key={user.name} className="member-search-item">
+                            {user.name}
                             <button
                                 type="button" // Prevents form submission
                                 onClick={() => onAddMember(user)}
