@@ -13,10 +13,6 @@ import CreateEvent from './pages/CreateEvent';
 import EditEvent from './pages/EditEvent';
 import Navbar from "./components/Navbar";
 import Calendar from "./pages/Calendar";
-<<<<<<< HEAD
-
-=======
->>>>>>> 05a64d89f860cf9f19ad7b60a8720c5372a8b73b
 import "./App.css";
 
 

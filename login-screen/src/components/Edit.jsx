@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MemberSearch from "./MemberSearch"; // Import the MemberSearch component
 
 function Edit({ group }) {
     const [groupName, setGroupName] = useState(group.name);
     const [groupDescription, setGroupDescription] = useState(group.description);
     const [groupTag, setGroupTag] = useState(group.tag);
+    const [members, setMembers] = useState(group.members || []); // Initialize members state
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -16,6 +18,7 @@ function Edit({ group }) {
             name: groupName,
             description: groupDescription,
             tag: groupTag,
+            members: members, // Include updated members
         };
 
         // Update the group in localStorage
@@ -25,11 +28,34 @@ function Edit({ group }) {
         );
         localStorage.setItem("groups", JSON.stringify(updatedGroups));
 
-        alert("Group updated successfully!");
+        // alert("Group updated successfully!");
 
         navigate("/grouphomepage"); // Redirect to the groups page after editing
     };
 
+    const handleDelete = () => {
+        // Remove the group from localStorage
+        const savedGroups = JSON.parse(localStorage.getItem("groups")) || [];
+        const updatedGroups = savedGroups.filter((g) => g.id !== group.id);
+        localStorage.setItem("groups", JSON.stringify(updatedGroups));
+
+        alert("Group deleted successfully!");
+
+        navigate("/grouphomepage"); // Redirect to the groups page after deletion
+    };
+
+    const handleAddMember = (member) => {
+        if (!members.some((m) => m.username === member.username)) {
+            setMembers([...members, member]);
+        } else {
+            alert("Member already added!");
+        }
+    };
+
+    const handleRemoveMember = (memberUsername) => {
+        // Remove the member by their username
+        setMembers(members.filter((m) => m.username !== memberUsername));
+    };
     return (
         <div className="create-group-container">
             <div className="search-group-header">
@@ -78,9 +104,35 @@ function Edit({ group }) {
                     </select>
                 </div>
 
+                <div className="form-group">
+                    <h2 className="form-label">Add Members</h2>
+                    <MemberSearch onAddMember={handleAddMember} />
+                    <ul className="added-members-list">
+                        {members.map((member) => (
+                            <li key={member.username} className="added-member-item">
+                                {member.username}
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveMember(member.username)}
+                                    className="remove-member-button"
+                                >
+                                    Remove
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
                 <div className="form-actions">
                     <button type="submit" className="form-submit-button">
                         Save Changes
+                    </button>
+                    <button
+                        type="button"
+                        className="form-delete-button"
+                        onClick={handleDelete}
+                    >
+                        Delete Group
                     </button>
                 </div>
             </form>

@@ -706,7 +706,10 @@ button:hover {
 
 /* Form Actions */
 .form-actions {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add spacing between buttons */
+  margin-top: 20px; /* Optional: Add some spacing above the buttons */
 }
 
 .form-submit-button {
@@ -719,6 +722,21 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+.form-delete-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  color: #fff;
+  background-color: #ff1111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-delete-button:hover {
+  background-color: #ff7f11;
 }
 
 .form-submit-button:hover {

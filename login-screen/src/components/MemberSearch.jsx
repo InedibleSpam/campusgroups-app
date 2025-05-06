@@ -46,6 +46,7 @@ function MemberSearch({ onAddMember }) {
                         <li key={user.username} className="member-search-item">
                             {user.username}
                             <button
+                                type="button" // Prevents form submission
                                 onClick={() => onAddMember(user)}
                                 className="add-member-button"
                             >
