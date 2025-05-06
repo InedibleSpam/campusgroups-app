@@ -21,5 +21,17 @@
     "name": "Joe",
     "email": "banana@gmail.com",
     "password": "$2b$10$Evn3qBVSu1Gqfv1qSzzsZOOjahdgwJcR0CVLsQDq/taVeHxuJwuKi"
+  },
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "joe@gmail.com",
+    "password": "$2b$10$iBTuCjrg2nQ/2FpLJr6hwu1z4U522MN1S/Dnj85zvU3Mgq/STzVgm"
+  },
+  {
+    "id": 2,
+    "name": "Jimmy John",
+    "email": "jim@gmail.com",
+    "password": "$2b$10$/DV.MnRBQ.uuA44uAuIiDOI8fAp5e81zqBw9bNKhlvHn/Rk.6jdSe"
   }
 ]
